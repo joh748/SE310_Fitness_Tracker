@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Ben-G-Man/SE310_Fitness_Tracker/issues"
   },
-  "homepage": "https://github.com/Ben-G-Man/SE310_Fitness_Tracker#readme"
+  "homepage": "https://github.com/Ben-G-Man/SE310_Fitness_Tracker#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
