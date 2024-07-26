@@ -1,22 +1,15 @@
 {
   "name": "se310_fitness_tracker",
   "version": "1.0.0",
-  "description": "Fitness Tracker for SE310",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ben-G-Man/SE310_Fitness_Tracker.git"
-  },
-  "author": "AlphaVolt",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ben-G-Man/SE310_Fitness_Tracker/issues"
-  },
-  "homepage": "https://github.com/Ben-G-Man/SE310_Fitness_Tracker#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "vitest": "^2.0.4"
   }
 }
