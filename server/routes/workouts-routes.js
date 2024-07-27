@@ -1,12 +1,12 @@
-// Import express
+// The routes for workouts
+// What are routes? Routes are used to determine the structure of the URL. 
+
 const express = require('express')
-// Import workouts-controller
+
 const workoutsRoutes = require('../controllers/workouts-controller')
 
-// Create router
 const router = express.Router()
 
 router.get('/all', workoutsRoutes.workoutsAll)
 
-// Export router
 module.exports = router;

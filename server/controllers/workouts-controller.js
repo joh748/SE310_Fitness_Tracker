@@ -1,4 +1,6 @@
-// Import database
+// This is the controller for the workouts route. The controller is responsible for handling the request and response.
+
+
 const knex = require('./../db')
 
 // Retrieve all workouts
@@ -8,7 +10,7 @@ const workoutsAll = (req, res) => {
     .select('*') // select all records
     .from('workouts') // from 'workouts' table
     .then(userData => {
-      // Send books extracted from database in response
+      // Send workouts extracted from database in response
       res.json(userData)
     })
     .catch(err => {
