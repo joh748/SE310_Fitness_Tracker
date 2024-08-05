@@ -1,5 +1,5 @@
 ---
-name: Custom Bug template
+name: Bug template
 about: Bug issues require description including the details in this template
 title: "[BUG]"
 labels: ''
