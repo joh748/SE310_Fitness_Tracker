@@ -33,16 +33,14 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">FiTrack</h3>
 
   <p align="center">
-    project_description
+    FiTrack is a web-app that allows users to add custom exercises and then track their gym progress over time. The app will store the users workout data locally and use this data set to display intuitive visualisations of the users progress and allow them to recap previous workouts. The goal of this system is to keep users informed and motivated regarding their efforts at the gym.
     <br />
     <a href="https://github.com/SE310-Team-1/SE310_Fitness_Tracker"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/SE310-Team-1/SE310_Fitness_Tracker">View Demo</a>
-    ·
     <a href="https://github.com/SE310-Team-1/SE310_Fitness_Tracker/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
     <a href="https://github.com/SE310-Team-1/SE310_Fitness_Tracker/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
@@ -56,7 +54,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#Project Description">Project Description</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -72,15 +70,14 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+<!-- Project Description -->
+## Project Description
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -150,8 +147,7 @@ This is an example of how to list things you need to use the software and how to
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-# TODO
-add screenshot of the website
+demo relevant screenshots might go here
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
