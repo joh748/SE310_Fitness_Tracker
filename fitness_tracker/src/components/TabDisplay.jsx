@@ -47,9 +47,9 @@ function TabDisplay() {
     <Box sx={{ width: '100%' }}>
       
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="Routines and Exercises Tab" centered={true}>
+        <Tabs value={value} onChange={handleChange} aria-label="Routines and Today's Workout Tab" centered={true}>
           <Tab label="Routines" {...a11yProps(0)} />
-          <Tab label="Exercises" {...a11yProps(1)} />
+          <Tab label="Today's Workout" {...a11yProps(1)} />
         </Tabs>
       </Box>
 

@@ -7,8 +7,8 @@ test('renders Routines', () => {
   expect(rountinesElement).toBeInTheDocument();
 });
 
-test('renders Exercises', () => {
+test('renders Today\'s Workout', () => {
   render(<App/>);
-  const exercisesElemet = screen.getByText("Exercises");
+  const exercisesElemet = screen.getByText("Today's Workout");
   expect(exercisesElemet).toBeInTheDocument();
 });
