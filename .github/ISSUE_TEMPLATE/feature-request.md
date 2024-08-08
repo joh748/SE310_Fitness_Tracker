@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Suggest an idea for FiTrack
 title: "[Feature]"
 labels: ''
 assignees: ''
@@ -16,8 +16,5 @@ Please ensure the following for feature requests
 ## Describe the solution you'd like
 <!-- A clear and concise description of what you want to happen -->
 
-## Describe alternatives you've considered
-<!-- A clear and concise description of any alternative solutions or features you've considered --> 
-
-## Additional context
-<!-- Add any other context or screenshots about the feature request here -->
+## Include a user story to describe why you want this feature
+<!-- A clear user story -->
