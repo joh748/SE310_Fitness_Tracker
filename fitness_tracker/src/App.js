@@ -37,8 +37,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GraphDisplay data={data}/>
+        what to add in the app header
       </header>
+      <GraphDisplay data={data}/>
 
       <TabDisplay/>
 
