@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 
 const workoutsRouter = require('./routes/workouts-routes')
+const exercisesRouter = require('./routes/exercises-routes')
 
 const PORT = 4001
 
@@ -29,6 +30,8 @@ app.use(bodyParser.json())
 
 // Implement workouts route
 app.use('/workouts', workoutsRouter)
+
+app.use('/exercises', exercisesRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello, world!');
