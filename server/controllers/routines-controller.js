@@ -46,7 +46,7 @@ const routineByNameAndDate = (req, res) => {
         )
 }
 
-//creates a new exercise
+//creates a new routine
 const createRoutine = (req, res) => {
     const {name,date} = req.params
 

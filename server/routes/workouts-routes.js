@@ -13,4 +13,6 @@ router.get('/all', workoutsController.workoutsAll)
 // Get workout by date, in format 'YYYY-MM-DD'
 router.get('/:date', workoutsController.workoutByDate)
 
+router.post('/create/:date', workoutsController.createWorkout)
+
 module.exports = router;
