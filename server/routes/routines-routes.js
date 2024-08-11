@@ -12,4 +12,8 @@ router.get('/', routinesController.getRoutines);
 // Get a routine by name and date
 router.get('/:name/:date', routinesController.getRoutine);
 
+// create a new routine
+router.post('/:name/:date', routinesController.getRoutine);
+
+
 module.exports = router;
