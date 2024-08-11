@@ -75,10 +75,39 @@ const createExercise = (req, res) => {
         });
 }
 
+//logs new exercise Set
+const logExerciseSet = (req, res) => {
+    const {name,date,set,weight,rep,score}= req.params
 
+
+    knex('exercises_history')
+        .insert({
+            'name': name,
+            'date': date,
+            'set': set,
+            'weight': weight,
+            'rep':rep,
+            'score':score
+        })
+        //if conflict occurs then drops current insert apon error
+        .onConflict(['name','date','set']).ignore()
+        .returning('name')  
+        .then(name => {
+            if (name.length > 0) {
+                res.status(201).json({ message: 'Exercise set added successfully'});
+            } else {
+                res.status(200).json({ message: 'Conflicting exercise name, date of completion, or set number. no new entry created' });
+            }
+        })
+        .catch(error => {
+            // Error: Something went wrong
+            res.status(500).json({ message: `An error occurred while creating a new exercises`, error: error.message });
+        });
+}
 
 module.exports = {
     exercisesAll,
     exerciseByNameDateAndSets,
-    createExercise
+    createExercise,
+    logExerciseSet
   };

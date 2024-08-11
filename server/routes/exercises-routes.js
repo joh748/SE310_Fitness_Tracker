@@ -13,9 +13,10 @@ router.get('/all', exercisesController.exercisesAll)
 router.get('/:name/:date/:set', exercisesController.exerciseByNameDateAndSets)
 
 //Create a new exercise
-router.post('/create/:name/:muscleGroup', exercisesController.createExercise)
+router.post('/create', exercisesController.createExercise)
 
 //Log a set
+router.post('/Log/:name/:date/:set/:weight/:rep/:score', exercisesController.logExerciseSet)
 
 
 module.exports = router;
