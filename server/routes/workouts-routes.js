@@ -3,10 +3,16 @@
 
 const express = require('express')
 
-const workoutsRoutes = require('../controllers/workouts-controller')
+const workoutsController = require('../controllers/workouts-controller')
 
 const router = express.Router()
 
-router.get('/all', workoutsRoutes.workoutsAll)
+// Get all workouts
+router.get('/all', workoutsController.workoutsAll)
+
+// Get workout by date, in format 'YYYY-MM-DD'
+router.get('/:date', workoutsController.workoutByDate)
+
+router.post('/create/:date', workoutsController.createWorkout)
 
 module.exports = router;
