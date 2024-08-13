@@ -1,8 +1,13 @@
-// Import path module
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 
-// Get the location of database.sqlite file
-const dbPath = path.resolve(__dirname, 'db/database.sqlite')
+const dbDir = path.resolve(__dirname, 'db');
+const dbPath = path.join(dbDir, 'database.sqlite');
+
+// Ensure the directory exists
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
 
 // Create connection to SQLite database
 const knex = require('knex')({
@@ -10,8 +15,9 @@ const knex = require('knex')({
   connection: {
     filename: dbPath,
   },
-  useNullAsDefault: true
-})
+  useNullAsDefault: true,
+});
+
 
 // Create a table in the database called "exercises"
 knex.schema
