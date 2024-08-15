@@ -1,5 +1,5 @@
 // This is the controller for the workouts route. The controller is responsible for handling the request and response.
-const knex = require('./../db')
+import knex from './../db.js';
 
 // Retrieve all workouts
 const workoutsAll = (req, res) => {
@@ -37,7 +37,6 @@ const workoutByDate = (req, res) => {
     })
 }
 
-
 //creates a new workout
 const createWorkout = (req, res) => {
     const {date} = req.params
@@ -62,9 +61,8 @@ const createWorkout = (req, res) => {
         });
 }
 
-module.exports = {
+export {
   workoutsAll,
   workoutByDate,
   createWorkout
-
-};
+}

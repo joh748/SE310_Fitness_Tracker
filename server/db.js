@@ -1,27 +1,15 @@
-const fs = require('fs');
-const path = require('path');
+import knexModule from 'knex';
+import knexfile from './knexfile.cjs';
 
-const dbDir = path.resolve(__dirname, 'db');
-const dbPath = path.join(dbDir, 'database.sqlite');
+// Determine the environment and select the appropriate configuration
+const environment = process.env.NODE_ENV === 'development' ? 'development' : 'test';
 
-// Ensure the directory exists
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
-}
-
-// Create connection to SQLite database
-const knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: dbPath,
-  },
-  useNullAsDefault: true,
-});
+const config = knexfile[environment];
+const knex = knexModule(config);
 
 
 // Create a table in the database called "exercises"
 knex.schema
-  // If there is already a table, work with it
   .hasTable('exercises')
   .then((exists) => {
     if (!exists) {
@@ -44,7 +32,7 @@ knex.schema
   })
   .then(() => {
     // Log success message
-    console.log('done')
+    console.log('created exercises table')
   })
   .catch((error) => {
     console.error(`There was an error setting up the database: ${error}`)
@@ -52,7 +40,6 @@ knex.schema
 
 // Create a table in the database called "workouts"
 knex.schema
-  // If there is already a table, work with it
   .hasTable('workouts')
   .then((exists) => {
     if (!exists) {
@@ -72,7 +59,7 @@ knex.schema
   })
   .then(() => {
     // Log success message
-    console.log('done')
+    console.log('created workouts table')
   })
   .catch((error) => {
     console.error(`There was an error setting up the database: ${error}`)
@@ -80,12 +67,9 @@ knex.schema
 
 // Create a table in the database called "routines"
 knex.schema
-  // If there is already a table, work with it
   .hasTable('routines')
   .then((exists) => {
     if (!exists) {
-      // If no "routines" table exists
-      // create new, with "name" and "date" as columns and primary key. this is because we will be storing the exercises in a separate table
       return knex.schema.createTable('routines', (table) => {
         table.string('name').notNullable()
         table.date('date').notNullable()
@@ -101,29 +85,30 @@ knex.schema
           console.error(`There was an error creating table: ${error}`)
         })
     }
+  }).then(() => {
+    // Log success message
+    console.log('created routines table')
+  })
+  .catch((error) => {
+    console.error(`There was an error setting up the database: ${error}`)
   })
 
 
 // Create a table in the database called "exercises_history"
 knex.schema
-  // If there is already a table, work with it
   .hasTable('exercises_history')
   .then((exists) => {
     if (!exists) {
-      // If no "exercises_history" table exists
-      // create new, with "weight", "set", "rep",
-      // and use "id" as a primary identification
-      // and increment "id" with every new record (book)
       return knex.schema.createTable('exercises_history', (table) => {
         table.string('name').notNullable();
         table.date('date').notNullable();
-        table.integer('set').notNullable();
+        table.integer('sets').notNullable();
         table.float('weight');
-        table.integer('rep');
+        table.integer('reps');
         table.integer('score');
 
         // Define composite primary key
-        table.primary(['name', 'date', 'set']);
+        table.primary(['name', 'date', 'sets']);
 
         // Define foreign keys
         table.foreign('name').references('exercises.name');
@@ -140,18 +125,10 @@ knex.schema
   })
   .then(() => {
     // Log success message
-    console.log('done')
+    console.log('created exercises_history table')
   })
   .catch((error) => {
     console.error(`There was an error setting up the database: ${error}`)
   })
 
-
-
-// Log all data in "exercises_history" table (for debugging)
-knex.select('*').from('exercises_history')
-  .then(data => console.log('data:', data))
-  .catch(err => console.log(err))
-
-// Export the database
-module.exports = knex
+export default knex;
