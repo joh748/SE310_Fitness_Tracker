@@ -21,7 +21,7 @@ const ExercisesDisplay = () => {
             reps: 10,
             setsGoal: 5,
             setsLogged: 0,
-            editMode: true
+            editMode: false
         }
     ])
 
@@ -82,9 +82,9 @@ const ExercisesDisplay = () => {
                 <tbody>
                     {exercises.map(exercise => (
                             exercise.editMode ? 
-                                    <ExerciseEditor exercise={exercise} updateExercise={updateExerciseById} />
+                                    <ExerciseEditor exercise={exercise} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
                                 : 
-                                    <ExerciseLogger exercise={exercise} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
+                                    <ExerciseLogger exercise={exercise} updateExercise={updateExerciseById} />
                         )
                     )}
                 </tbody>
