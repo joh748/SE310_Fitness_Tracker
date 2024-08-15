@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const ExerciseLogger = ({exercise, updateExercise}) => {
+const ExerciseLogger = ({exercise, isEditing, updateExercise}) => {
 
     const logSet = () => {
         exercise.setsLogged += 1
@@ -20,7 +20,7 @@ const ExerciseLogger = ({exercise, updateExercise}) => {
                 <td>{exercise.reps}</td>
                 <td>{exercise.setsGoal}</td>
                 <td>{exercise.setsLogged}</td>
-                <td><button onClick={() => startEditing()}>Edit</button></td>
+                <td>{!isEditing && <button onClick={() => startEditing()}>Edit</button>}</td>
                 <td><button onClick={() => logSet()}>Log Set</button></td>
             </tr>
         </Fragment>

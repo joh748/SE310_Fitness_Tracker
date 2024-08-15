@@ -5,7 +5,7 @@ import Picker from 'react-mobile-picker'
 const ExerciseEditor = ({exercise, deleteExercise, updateExercise}) => {
 
     const selections = {
-        name: ['Curls', 'Squats', 'Deadlifts'], 
+        name: ['', 'Curls', 'Squats', 'Deadlifts'], 
         weight: _.range(501),
         reps: _.range(201),
         setsGoal: _.range(101)
@@ -29,7 +29,7 @@ const ExerciseEditor = ({exercise, deleteExercise, updateExercise}) => {
         <Fragment>
             <tr key={exercise.id}>
                 <td>
-                    <Picker value={selectedName} onChange={setSelectedName} height={96} wheel="natural">
+                    <Picker value={selectedName} onChange={setSelectedName} height={96} wheel={'normal'}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.name.map(option => (
                                 <Picker.Item key={option} value={option}>
@@ -40,7 +40,7 @@ const ExerciseEditor = ({exercise, deleteExercise, updateExercise}) => {
                     </Picker>
                 </td>
                 <td>
-                    <Picker value={selectedWeight} onChange={setSelectedWeight} height={96} wheel="natural">
+                    <Picker value={selectedWeight} onChange={setSelectedWeight} height={96} wheel={'normal'}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.weight.map(option => (
                                 <Picker.Item key={option} value={option}>
@@ -51,7 +51,7 @@ const ExerciseEditor = ({exercise, deleteExercise, updateExercise}) => {
                     </Picker>
                 </td>
                 <td>
-                    <Picker value={selectedReps} onChange={setSelectedReps} height={96} wheel="natural">
+                    <Picker value={selectedReps} onChange={setSelectedReps} height={96} wheel={'normal'}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.reps.map(option => (
                                 <Picker.Item key={option} value={option}>
@@ -62,7 +62,7 @@ const ExerciseEditor = ({exercise, deleteExercise, updateExercise}) => {
                     </Picker>
                 </td>
                 <td>
-                    <Picker value={selectedSetsGoal} onChange={setSelectedSetsGoal} height={96} wheel="natural">
+                    <Picker value={selectedSetsGoal} onChange={setSelectedSetsGoal} height={96} wheel={'normal'}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.setsGoal.map(option => (
                                 <Picker.Item key={option} value={option}>

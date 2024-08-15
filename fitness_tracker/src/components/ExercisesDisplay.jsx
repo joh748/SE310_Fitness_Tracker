@@ -25,6 +25,8 @@ const ExercisesDisplay = () => {
         }
     ])
 
+    const [isEditing, setIsEditing] = useState(false)
+
     const getLoadedExercises = async () => {
         try {
             // TODO: get currently loaded exercises from backend
@@ -39,10 +41,13 @@ const ExercisesDisplay = () => {
     }
 
     const deleteExerciseById = useCallback((idToDelete) => {
+
         setExercises(exercises => exercises.filter(({id}) => id !== idToDelete));
+
     }, [])
 
     const updateExerciseById = useCallback((updatedExercise) => {
+
         setExercises(exercises => exercises.map(exercise => {
             if (exercise.id === updatedExercise.id) {
                 return updatedExercise
@@ -50,7 +55,30 @@ const ExercisesDisplay = () => {
                 return exercise
             }
         }))
+
+        setIsEditing(updatedExercise.editMode)
+
     }, [])
+
+    const addExercise = async () => {
+
+        const newExercise = {   
+            id: Math.max(exercises.map(exercise => exercise.id)) + 1,
+            name: "",
+            weight: 10,
+            reps: 10,
+            setsGoal: 5,
+            setsLogged: 0,
+            editMode: true
+        }
+
+        setIsEditing(true)
+
+        const updatedExercises = [...exercises]
+        updatedExercises.push(newExercise)
+        
+        setExercises(exercises => updatedExercises)
+    }
 
     const logWorkout = async () => {
 
@@ -84,13 +112,13 @@ const ExercisesDisplay = () => {
                             exercise.editMode ? 
                                     <ExerciseEditor exercise={exercise} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
                                 : 
-                                    <ExerciseLogger exercise={exercise} updateExercise={updateExerciseById} />
+                                    <ExerciseLogger exercise={exercise} isEditing={isEditing} updateExercise={updateExerciseById} />
                         )
                     )}
                 </tbody>
             </table>
-            <button>Add Exercise</button>
-            <button onClick={() => logWorkout()}>Log Workout</button>
+            {!isEditing && <button onClick={() => addExercise()}>Add Exercise</button>}
+            {!isEditing && <button onClick={() => logWorkout()}>Log Workout</button>}
         </Fragment>
     )
 }
