@@ -1,22 +1,25 @@
 // The routes for exercises
-
-const express = require('express')
-
-const exercisesController = require('../controllers/exercises-controller')
+import express from 'express';
+import { exercisesAll, exercisesAllHistory, exercisesDay, exerciseByNameDateAndSets, createExercise, logExerciseSet } from '../controllers/exercises-controller.js';
 
 const router = express.Router()
 
 // Get all exercises
-router.get('/all', exercisesController.exercisesAll)
+router.get('/all', exercisesAll)
 
-// Get exercise by name, date and set
-router.get('/:name/:date/:set', exercisesController.exerciseByNameDateAndSets)
+// Get all exercises in history
+router.get('/history', exercisesAllHistory)
+
+// Get all exercises in one day
+router.get('/:date', exercisesDay)
+
+// Get exercise by name, date and sets
+router.get('/:name/:date/:sets', exerciseByNameDateAndSets)
 
 //Create a new exercise
-router.post('/create', exercisesController.createExercise)
+router.post('/create', createExercise)
 
 //Log a set
-router.post('/Log/:name/:date/:set/:weight/:rep/:score', exercisesController.logExerciseSet)
+router.post('/Log/:name/:date/:set/:weight/:rep/:score', logExerciseSet)
 
-
-module.exports = router;
+export default router;
