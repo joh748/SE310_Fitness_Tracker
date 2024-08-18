@@ -1,0 +1,120 @@
+.routineCard {
+    background-color: #2C2C2C;
+    /* Dark background for the modal */
+    color: #FFFFFF;
+    /* Light text color */
+    padding: 24px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.routineCard:hover {
+    transform: translateY(-4px);
+    /* Subtle lift effect on hover */
+}
+
+.routineTitle {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+    color: #FF5252;
+    /* Brand color for the title */
+}
+
+.routineDetails {
+    margin-bottom: 12px;
+}
+
+.exercise {
+    background-color: #383838;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+.exercise span {
+    color: #E0E0E0;
+    align-items: center;
+}
+
+.inputField {
+    width: calc(100% - 60px); /* Adjust width to leave space for suffix */
+    background-color: #4A4A4A;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    padding-right: 40px; /* Add padding on the right to avoid overlapping with suffix */
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+.inputField:focus {
+    outline: none;
+    border: 1px solid #FF5252;
+    /* Highlight input on focus with brand color */
+}
+
+.button {
+    padding: 8px 16px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.saveButton {
+    background-color: #4CAF50;
+    /* Green save button */
+    color: #FFFFFF;
+}
+
+.saveButton:hover {
+    background-color: #388E3C;
+}
+
+.cancelButton {
+    background-color: #757575;
+    /* Gray cancel button */
+    color: #FFFFFF;
+    margin-left: 8px;
+}
+
+.cancelButton:hover {
+    background-color: #616161;
+}
+
+.addButton {
+    background-color: #FF5252; /* Brand color for add button */
+    color: #FFFFFF;
+    margin-top: 8px;
+}
+
+.addButton:hover {
+    background-color: #E53935;
+}
+
+.deleteButton {
+    background-color: #F44336; /* Red delete button */
+    color: #FFFFFF;
+    margin-left: 8px;
+}
+
+.deleteButton:hover {
+    background-color: #D32F2F;
+}
+
+  /* suffix */
+  .inputWithSuffix {
+    position: relative;
+  }
+  
+  .suffix {
+    position: absolute;
+    right: 20px; /* Position the suffix inside the input field */
+    top: 20%;
+    color: #B0B0B0; /* Light gray for the suffix text */
+    pointer-events: none;
+  }
