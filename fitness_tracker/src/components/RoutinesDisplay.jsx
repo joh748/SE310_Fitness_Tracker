@@ -31,7 +31,7 @@ const RoutinesDisplay = () => {
     const handleEditRoutine = (updatedRoutine) => {
         console.log("routines:", routines[0].name);
         console.log("Updated routine:", updatedRoutine.name); // Debug log
-        setRoutines(routines.map(routine => routine === updatedRoutine ? routine : updatedRoutine));
+        setRoutines(routines.map(routine => routine === updatedRoutine ? updatedRoutine : routine));
     };
 
     return (

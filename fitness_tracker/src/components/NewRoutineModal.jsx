@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from '../module_CSS/NewRoutineModal.module.css';
+import formatDate from '../utils/dateUtils.js'
 
 const NewRoutineModal = ({ onSave, onClose }) => {
     const today = new Date();
-    const formattedDate = `${today.getDate()}${(today.getMonth() + 1).toString().padStart(2, '0')}${today.getFullYear()}`;
+    const formattedDate = formatDate(today);
     
     const [routine, setRoutine] = useState({
         name: '',
