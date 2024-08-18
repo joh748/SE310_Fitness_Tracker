@@ -5,10 +5,10 @@ import styles from '../module_CSS/RoutinesDisplay.module.css'
 
 const RoutinesDisplay = () => {
     const [routines, setRoutines] = useState([
-        // Sample data; replace with actual data from backend
+        // Sample data, need to replace with actual data from backend
         {
             name: "Leg Routine",
-            date: "14th Aug 2023",
+            date: "14th Aug 2024",
             muscles: "Quads, Hamstring, Calves",
             exercises: [
                 { name: "Squat", sets: 4, reps: 10, weight: 100 },
@@ -29,7 +29,9 @@ const RoutinesDisplay = () => {
     };
 
     const handleEditRoutine = (updatedRoutine) => {
-        setRoutines(routines.map(routine => routine === updatedRoutine ? updatedRoutine : routine));
+        console.log("routines:", routines[0].name);
+        console.log("Updated routine:", updatedRoutine.name); // Debug log
+        setRoutines(routines.map(routine => routine === updatedRoutine ? routine : updatedRoutine));
     };
 
     return (

@@ -24,6 +24,7 @@ const Routine = ({ routine, onSave, onDelete }) => {
     };
 
     const handleSave = () => {
+        console.log("Saving routine:", editedRoutine); // Debug log
         onSave(editedRoutine);
         setIsEditing(false);
     };
@@ -53,6 +54,17 @@ const Routine = ({ routine, onSave, onDelete }) => {
 
                     {editedRoutine.exercises.map((exercise, index) => (
                         <div key={index} className={styles.exercise}>  
+
+                            <div className={styles.inputWithSuffix}>
+                                <input 
+                                    type="text" 
+                                    className={styles.inputField}
+                                    placeholder="Exercise Name" 
+                                    value={exercise.name} 
+                                    onChange={(e) => handleExerciseChange(index, 'name', e.target.value)} 
+                                />
+                                <span className={styles.suffix}>Name</span>
+                            </div>       
 
                             <div className={styles.inputWithSuffix}>
                                 <input 
