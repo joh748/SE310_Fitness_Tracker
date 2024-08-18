@@ -7,7 +7,7 @@ const ExercisesDisplay = () => {
     const [exercises, setExercises] = useState([
         {   
             id: 0,
-            name: "Curls",
+            name: "Lat Raise",
             weight: 20,
             reps: 10,
             setsGoal: 4,
@@ -16,7 +16,7 @@ const ExercisesDisplay = () => {
         },
         {   
             id: 1,
-            name: "Squats",
+            name: "Squat",
             weight: 50,
             reps: 10,
             setsGoal: 5,
@@ -98,13 +98,13 @@ const ExercisesDisplay = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Weight</th>
-                        <th>Reps</th>
-                        <th>Sets Goal</th>
-                        <th>Sets Completed</th>
-                        <th>Delete Exercise</th>
-                        <th>Log Set</th>
+                        <th style={{width: 288}}>Name</th>
+                        <th style={{width: 96}}>Weight</th>
+                        <th style={{width: 96}}>Reps</th>
+                        <th style={{width: 96}}>Sets Goal</th>
+                        <th style={{width: 96}}>Sets Completed</th>
+                        <th style={{width: 96}}>Delete Exercise</th>
+                        <th style={{width: 96}}>Log Set</th>
                     </tr>
                 </thead>
                 <tbody>

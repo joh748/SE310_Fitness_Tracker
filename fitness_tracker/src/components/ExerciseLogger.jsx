@@ -14,7 +14,7 @@ const ExerciseLogger = ({exercise, isEditing, updateExercise}) => {
 
     return (
         <Fragment>
-            <tr key={exercise.id}>
+            <tr key={exercise.id} style={{height: 96}}>
                 <td>{exercise.name}</td>
                 <td>{exercise.weight}</td>
                 <td>{exercise.reps}</td>
