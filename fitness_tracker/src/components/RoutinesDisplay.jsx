@@ -28,11 +28,12 @@ const RoutinesDisplay = () => {
         setRoutines(routines.filter(routine => routine !== routineToDelete));
     };
 
-    const handleEditRoutine = (updatedRoutine) => {
-        console.log("routines:", routines[0].name);
-        console.log("Updated routine:", updatedRoutine.name); // Debug log
-        setRoutines(routines.map(routine => routine === updatedRoutine ? updatedRoutine : routine));
+    const handleEditRoutine = (updatedRoutine, index) => {
+        console.log("routines:", routines);
+        console.log("Updated routine:", updatedRoutine); // Debug log
+        setRoutines(routines.map((routine, i) => i === index ? updatedRoutine : routine));
     };
+    
 
     return (
         <div className={styles.container}>
@@ -50,7 +51,7 @@ const RoutinesDisplay = () => {
                 <Routine 
                     key={index} 
                     routine={routine} 
-                    onSave={(updatedRoutine) => handleEditRoutine(updatedRoutine)} 
+                    onSave={(updatedRoutine) => handleEditRoutine(updatedRoutine, index)} 
                     onDelete={() => handleDeleteRoutine(routine)} 
                 />
             ))}
