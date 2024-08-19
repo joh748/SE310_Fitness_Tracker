@@ -1,6 +1,7 @@
+@import './colours.module.css';
 .modalContainer {
-    background-color: #2C2C2C; /* Dark background for the modal */
-    color: #FFFFFF; /* Light text color */
+    background-color: var(--dark-bg-color); /* Dark background for the modal */
+    color: var(--primary-text-color); /* Light text color */
     padding: 24px;
     border-radius: 8px;
     max-width: 500px;
@@ -16,14 +17,14 @@
 
   .modalTitle {
     font-size: 1.8em;
-    color: #FF5252; /* Brand color for the title */
+    color: var(--button-bg-color); /* Brand color for the title */
     margin-bottom: 16px;
   }
   
   .inputField {
     width: calc(100% - 60px); /* Adjust width to leave space for suffix */
-    background-color: #4A4A4A;
-    color: #FFFFFF;
+    background-color: var(--input-bg-color);
+    color: var(--primary-text-color);
     border: none;
     padding: 10px;
     padding-right: 40px; /* Add padding on the right to avoid overlapping with suffix */
@@ -33,7 +34,7 @@
   
   .inputField:focus {
     outline: none;
-    border: 1px solid #FF5252; /* Highlight input on focus with brand color */
+    border: 1px solid var(--button-bg-color); /* Highlight input on focus with brand color */
   }
   
   .dateDisplay {
@@ -41,7 +42,7 @@
   }
   
   .exerciseContainer {
-    background-color: #383838;
+    background-color: var(--primary-bg-color);
     padding: 8px;
     border-radius: 4px;
     margin-bottom: 8px;
@@ -63,7 +64,7 @@
   }
 
   .button:hover {
-    background-color: #b71c1c;
+    background-color: var(--button-hover-bg-color);
     border: 1px solid;
     box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
     outline-color: rgba(255, 255, 255, 0);
@@ -71,39 +72,39 @@
 }
   
   .addButton {
-    background-color: #FF5252; /* Brand color for add button */
-    color: #FFFFFF;
+    background-color: var(--button-bg-color); /* Brand color for add button */
+    color: var(--primary-text-color);
   }
   
   .addButton:hover {
-    background-color: #E53935;
+    background-color: var(--button-hover-bg-color);
   }
 
   .cancelButton {
-    background-color: #757575; /* Grey cancel button */
-    color: #FFFFFF;
+    background-color: var(--cancel-button-bg-color); /* Grey cancel button */
+    color: var(--primary-text-color);
   }
   
   .cancelButton:hover {
-    background-color: #616161;
+    background-color: var(--cancel-button-hover-bg-color);
   }
   
   .saveButton {
-    background-color: #FF5252; /* Green save button */
-    color: #FFFFFF;
+    background-color: var(--button-bg-color); /* Green save button */
+    color: var(--primary-text-color);
   }
   
   .saveButton:hover {
-    background-color: #E53935;
+    background-color: var(--button-hover-bg-color);
   }
   
   .deleteButton {
-    background-color: #757575; /* Grey delete button */
-    color: #FFFFFF;
+    background-color: var(--cancel-button-bg-color); /* Grey delete button */
+    color: var(--primary-text-color);
   }
   
   .deleteButton:hover {
-    background-color: #616161;
+    background-color: var(--cancel-button-hover-bg-color);
   }
   
 
