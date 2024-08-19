@@ -56,6 +56,11 @@ const RoutinesDisplay = () => {
         setRoutines(routines.map((routine, i) => i === index ? updatedRoutine : routine));
         // routines have to be saved to the backend
     };
+
+    const handleAddTodayWorkout = (routine) => {
+        console.log(routine); // Debug log
+        // the routine information can go to today's workout component
+    }
     
 
     return (
@@ -80,7 +85,8 @@ const RoutinesDisplay = () => {
                     key={index} 
                     routine={routine} 
                     onSave={(updatedRoutine) => handleEditRoutine(updatedRoutine, index)} 
-                    onDelete={() => handleDeleteRoutine(routine)} 
+                    onDelete={() => handleDeleteRoutine(routine)}
+                    onAddToToday={() => handleAddTodayWorkout(routine)} 
                 />
             ))}
         </div>

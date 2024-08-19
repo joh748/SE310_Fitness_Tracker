@@ -72,6 +72,14 @@
     transition: background-color 0.3s ease;
 }
 
+.button:hover {
+    background-color: #b71c1c;
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 1px;
+}
+
 .addButton {
     background-color: #FF5252; /* Brand color for add button */
     color: #FFFFFF;
@@ -106,6 +114,10 @@
   
   .deleteButton:hover {
     background-color: #616161;
+  }
+
+  .addToTodayButton:hover {
+    color: #FFFFFF;
   }
 
 .expandIcon {

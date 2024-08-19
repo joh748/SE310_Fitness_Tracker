@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../module_CSS/Routine.module.css';
 
-const Routine = ({ routine, onSave, onDelete }) => {
+const Routine = ({ routine, onSave, onDelete, onAddToToday }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [isExercisesVisible, setIsExercisesVisible] = useState(false);
     const [editedRoutine, setEditedRoutine] = useState(routine);
@@ -170,6 +170,13 @@ const Routine = ({ routine, onSave, onDelete }) => {
                             onClick={() => setIsEditing(true)}
                         >
                             Edit Routine
+                        </button>
+
+                        <button 
+                            className={`${styles.button} ${styles.addToTodayButton}`} 
+                            onClick={() => onAddToToday(routine)}
+                        >
+                            Add to Today's Workout
                         </button>
                     </div>
                 </>
