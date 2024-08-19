@@ -1,6 +1,6 @@
 @import './colours.module.css';
 .routineCard {
-    background-color: var(--dark-bg-color);
+    background-color: var(--primary-bg-color);
     /* Dark background for the modal */
     color: var(--primary-text-color);
     /* Light text color */
