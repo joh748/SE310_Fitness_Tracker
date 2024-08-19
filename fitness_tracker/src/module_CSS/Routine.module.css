@@ -25,6 +25,7 @@
 
 .routineDetails {
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .exercise {
@@ -56,6 +57,12 @@
     /* Highlight input on focus with brand color */
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
 .button {
     padding: 8px 16px;
     margin-top: 12px;
@@ -65,45 +72,45 @@
     transition: background-color 0.3s ease;
 }
 
-.saveButton {
-    background-color: #4CAF50;
-    /* Green save button */
-    color: #FFFFFF;
-}
-
-.saveButton:hover {
-    background-color: #388E3C;
-}
-
-.cancelButton {
-    background-color: #757575;
-    /* Gray cancel button */
-    color: #FFFFFF;
-    margin-left: 8px;
-}
-
-.cancelButton:hover {
-    background-color: #616161;
-}
-
 .addButton {
     background-color: #FF5252; /* Brand color for add button */
     color: #FFFFFF;
-    margin-top: 8px;
-}
-
-.addButton:hover {
+  }
+  
+  .addButton:hover {
     background-color: #E53935;
-}
+  }
 
-.deleteButton {
-    background-color: #F44336; /* Red delete button */
+  .cancelButton {
+    background-color: #757575; /* Grey cancel button */
     color: #FFFFFF;
-    margin-left: 8px;
-}
+  }
+  
+  .cancelButton:hover {
+    background-color: #616161;
+  }
+  
+  .saveButton {
+    background-color: #FF5252; /* Green save button */
+    color: #FFFFFF;
+  }
+  
+  .saveButton:hover {
+    background-color: #E53935;
+  }
+  
+  .deleteButton {
+    background-color: #757575; /* Grey delete button */
+    color: #FFFFFF;
+  }
+  
+  .deleteButton:hover {
+    background-color: #616161;
+  }
 
-.deleteButton:hover {
-    background-color: #D32F2F;
+.expandIcon {
+    margin-left: '10px';
+    padding-left: 8px;
 }
 
   /* suffix */

@@ -3,6 +3,7 @@ import styles from '../module_CSS/Routine.module.css';
 
 const Routine = ({ routine, onSave, onDelete }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [isExercisesVisible, setIsExercisesVisible] = useState(false);
     const [editedRoutine, setEditedRoutine] = useState(routine);
 
     const handleExerciseChange = (index, field, value) => {
@@ -27,6 +28,10 @@ const Routine = ({ routine, onSave, onDelete }) => {
         console.log("Saving routine:", editedRoutine); // Debug log
         onSave(editedRoutine);
         setIsEditing(false);
+    };
+
+    const toggleExercisesVisibility = () => {
+        setIsExercisesVisible(!isExercisesVisible);
     };
 
     return (
@@ -101,57 +106,72 @@ const Routine = ({ routine, onSave, onDelete }) => {
                             </div>
                             
                             <button 
-                                className={styles.deleteButton} 
+                                className={`${styles.button} ${styles.deleteButton}`} 
                                 onClick={() => handleDeleteExercise(index)}
                             >
-                                Delete Exercise
+                                Delete
                             </button>
                         </div>
                     ))}
                     <button 
-                        className={styles.addButton} 
+                        className={`${styles.button} ${styles.addButton}`} 
                         onClick={handleAddExercise}
                     >
                         Add Exercise
                     </button>
-                    <div>
-                        <button 
-                            className={`${styles.button} ${styles.saveButton}`} 
-                            onClick={handleSave}
-                        >
-                            Save
-                        </button>
+                    <div className={styles.buttonContainer}>
                         <button 
                             className={`${styles.button} ${styles.cancelButton}`} 
                             onClick={() => setIsEditing(false)}
                         >
                             Cancel
                         </button>
+                        <button 
+                            className={`${styles.button} ${styles.saveButton}`} 
+                            onClick={handleSave}
+                        >
+                            Save
+                        </button>
                     </div>
                 </>
             ) : (
                 // When not editing a routine
                 <>
-                    <h3 className={styles.routineTitle}>{routine.name}</h3>
-                    <p className={styles.routineDetails}>Date: {routine.date}</p>
-                    <p className={styles.routineDetails}>Muscles: {routine.muscles}</p>
-                    {routine.exercises.map((exercise, index) => (
+                    <div onClick={toggleExercisesVisibility}>
+                        <h3 className={styles.routineTitle}>{routine.name}</h3>
+                        <p className={styles.routineDetails}>Date: {routine.date}</p>
+                        <p className={styles.routineDetails}>Muscles: {routine.muscles}
+                            <span className={styles.expandIcon}>
+                                {isExercisesVisible ? '↑' : '↓'}
+                            </span>
+                        </p>   
+                    </div>
+
+                    {isExercisesVisible && 
+                    <div>
+                        {routine.exercises.map((exercise, index) => (
                         <div key={index} className={styles.exercise}>
                             <span>{exercise.name}</span> {exercise.sets} sets {exercise.reps} reps {exercise.weight} kg
                         </div>
-                    ))}
-                    <button 
-                        className={`${styles.button} ${styles.saveButton}`} 
-                        onClick={() => setIsEditing(true)}
-                    >
-                        Edit Routine
-                    </button>
-                    <button 
-                        className={`${styles.button} ${styles.deleteButton}`} 
-                        onClick={onDelete}
-                    >
-                        Delete Routine
-                    </button>
+                    ))} 
+                    </div>
+                    }
+                    
+                    <div className={styles.buttonContainer}>
+                        <button 
+                            className={`${styles.button} ${styles.deleteButton}`} 
+                            onClick={onDelete}
+                        >
+                            Delete Routine
+                        </button>
+
+                        <button 
+                            className={`${styles.button} ${styles.saveButton}`} 
+                            onClick={() => setIsEditing(true)}
+                        >
+                            Edit Routine
+                        </button>
+                    </div>
                 </>
             )}
         </div>

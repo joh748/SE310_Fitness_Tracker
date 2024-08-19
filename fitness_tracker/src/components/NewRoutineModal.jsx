@@ -4,13 +4,13 @@ import formatDate from '../utils/dateUtils.js'
 
 const NewRoutineModal = ({ onSave, onClose }) => {
     const today = new Date();
-    const formattedDate = formatDate(today);
-    
+    const formattedDate = formatDate(today); // 14 Aug 2024
+
     const [routine, setRoutine] = useState({
         name: '',
         date: formattedDate,
         muscles: '',
-        exercises: [{name:'', reps:'', sets:'', weight:''}]
+        exercises: [{ name: '', reps: '', sets: '', weight: '' }]
     });
 
     const handleExerciseChange = (index, field, value) => {
@@ -35,91 +35,94 @@ const NewRoutineModal = ({ onSave, onClose }) => {
     return (
         <div className={styles.modalContainer}>
             <h2 className={styles.modalTitle}>Create New Routine</h2>
-            <input 
-                type="text" 
+            <input
+                type="text"
                 className={styles.inputField}
-                placeholder="Routine Name" 
-                value={routine.name} 
-                onChange={(e) => setRoutine({ ...routine, name: e.target.value })} 
+                placeholder="Routine Name"
+                value={routine.name}
+                onChange={(e) => setRoutine({ ...routine, name: e.target.value })}
             />
-            <input 
-                type="text" 
+            <input
+                type="text"
                 className={styles.inputField}
-                placeholder="Muscle Groups" 
-                value={routine.muscles} 
-                onChange={(e) => setRoutine({ ...routine, muscles: e.target.value })} 
+                placeholder="Muscle Groups"
+                value={routine.muscles}
+                onChange={(e) => setRoutine({ ...routine, muscles: e.target.value })}
             />
             <p className={styles.dateDisplay}>Date: {routine.date}</p>
-            <h3>Exercises</h3>
+            <h3>Add Exercises</h3>
             {routine.exercises.map((exercise, index) => (
                 <div key={index} className={styles.exerciseContainer}>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         className={styles.inputField}
-                        placeholder="Exercise Name" 
-                        value={exercise.name} 
-                        onChange={(e) => handleExerciseChange(index, 'name', e.target.value)} 
+                        placeholder="Exercise Name"
+                        value={exercise.name}
+                        onChange={(e) => handleExerciseChange(index, 'name', e.target.value)}
                     />
 
                     <div className={styles.inputWithSuffix}>
-                        <input 
-                            type="number" 
+                        <input
+                            type="number"
                             className={styles.inputField}
-                            placeholder="Sets" 
-                            value={exercise.sets} 
-                            onChange={(e) => handleExerciseChange(index, 'sets', e.target.value)} 
+                            placeholder="Sets"
+                            value={exercise.sets}
+                            onChange={(e) => handleExerciseChange(index, 'sets', e.target.value)}
                         />
                         <span className={styles.suffix}>sets</span>
                     </div>
 
                     <div className={styles.inputWithSuffix}>
-                        <input 
-                            type="number" 
+                        <input
+                            type="number"
                             className={styles.inputField}
-                            placeholder="Reps" 
-                            value={exercise.reps} 
-                            onChange={(e) => handleExerciseChange(index, 'reps', e.target.value)} 
+                            placeholder="Reps"
+                            value={exercise.reps}
+                            onChange={(e) => handleExerciseChange(index, 'reps', e.target.value)}
                         />
                         <span className={styles.suffix}>reps</span>
                     </div>
-                    
+
                     <div className={styles.inputWithSuffix}>
                         <input
-                        type="number" 
-                        className={styles.inputField}
-                        placeholder="Weight" 
-                        value={exercise.weight} 
-                        onChange={(e) => handleExerciseChange(index, 'weight', e.target.value)} 
+                            type="number"
+                            className={styles.inputField}
+                            placeholder="Weight"
+                            value={exercise.weight}
+                            onChange={(e) => handleExerciseChange(index, 'weight', e.target.value)}
                         />
                         <span className={styles.suffix}>kg</span>
                     </div>
 
-                    <button 
-                        className={`${styles.button} ${styles.deleteButton}`} 
+                    <button
+                        className={`${styles.button} ${styles.deleteButton}`}
                         onClick={() => handleDeleteExercise(index)}
                     >
-                        Delete Exercise
+                        Delete
                     </button>
                 </div>
             ))}
-            <button 
-                className={`${styles.button} ${styles.addButton}`} 
+
+            <button
+                className={`${styles.button} ${styles.addButton}`}
                 onClick={handleAddExercise}
             >
                 Add Exercise
             </button>
-            <div>
-                <button 
-                    className={`${styles.button} ${styles.saveButton}`} 
-                    onClick={handleSave}
-                >
-                    Save Routine
-                </button>
-                <button 
-                    className={`${styles.button} ${styles.cancelButton}`} 
+
+            <div className={styles.buttonContainer}>
+                <button
+                    className={`${styles.button} ${styles.cancelButton}`}
                     onClick={onClose}
                 >
                     Cancel
+                </button>
+
+                <button
+                    className={`${styles.button} ${styles.saveButton}`}
+                    onClick={handleSave}
+                >
+                    Save
                 </button>
             </div>
         </div>
