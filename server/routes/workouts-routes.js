@@ -14,4 +14,8 @@ router.get('/:date', workoutsController.workoutByDate)
 
 router.post('/create/:date', workoutsController.createWorkout)
 
+router.delete('/delete/:date', workoutsController.deleteWorkout)
+
+router.put('/edit/:date/:newDate',workoutsController.editWorkout);
+
 export default router;

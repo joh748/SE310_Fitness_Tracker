@@ -61,8 +61,54 @@ const createWorkout = (req, res) => {
         });
 }
 
+//deletes an existing workout
+const deleteWorkout = (req, res) => {
+  const {date} = req.params
+
+  knex('workouts')
+  .where('date', date)
+    .del()
+    .then(result => {
+      if (result) {
+        res.status(200).json({ message: 'Workout deleted successfully' });
+      } else {
+        res.status(404).json({ message: 'Workout not found' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: 'An error occurred while deleting a workout', error: error.message });
+    });
+
+}
+
+
+const editWorkout = (req, res) => {
+  let date = req.params.date
+  let newDate = req.params.newDate
+
+  knex('workouts').where({'date': date})
+      .update({
+          'date': newDate
+          },['date'])
+
+      .then(data => {
+          if (data.length > 0) {
+              res.status(200).json({ message: 'Workout was edited successfully'});
+          } else {
+              res.status(404).json({ message: `No workout on date: ${date}` });
+          }
+      })
+
+      .catch(error => {
+          // Error: Something went wrong
+          res.status(500).json({ message: `An error occurred while editing Workout`, error: error.message });
+      });
+}
+
 export {
   workoutsAll,
   workoutByDate,
-  createWorkout
+  createWorkout,
+  editWorkout,
+  deleteWorkout
 }
