@@ -32,6 +32,7 @@ const exercisesAllHistory = (req, res) => {
         )
 }
 
+
 // Retrieve all exercises in one day
 const exercisesDay = (req, res) => {
     const date = req.params.date
@@ -106,13 +107,13 @@ const getScoreByDate = (req, res) => {
 
 //creates a new exercise
 const createExercise = (req, res) => {
-    const { name, muscleGroup } = req.params
+    const { name, muscle_group } = req.params
 
 
     knex('exercises')
         .insert({
             'name': name,
-            'muscle_group': muscleGroup
+            'muscle_group': muscle_group
         })
         //if error occurs then drops insert apon error
         .onConflict('name').ignore()
@@ -271,7 +272,9 @@ const editSet = (req, res) => {
         });
 }
 
-export {
+
+
+export{
     exercisesAll,
     exercisesAllHistory,
     exercisesDay,
@@ -279,7 +282,7 @@ export {
     createExercise,
     logExerciseSet,
     deleteExercise,
-    deleteExerciseHistory
+    deleteExerciseHistory,
     editExercise,
     editSet,
     getScoreByDate
