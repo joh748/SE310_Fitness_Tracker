@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from "react"
 import _, { map } from 'underscore'
 import Picker from 'react-mobile-picker'
+import buttons from '../module_CSS/buttons.module.css'
+import styles from '../module_CSS/ExerciseEditor.module.css'
 
 const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}) => {
 
@@ -28,9 +30,9 @@ const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}
             selectedValue: "Chest Press Machine"
         }
     })
-    const [selectedWeight, setSelectedWeight] = useState({selectedValue: exercise.weight})
-    const [selectedReps, setSelectedReps] = useState({selectedValue: exercise.reps})
-    const [selectedSetsGoal, setSelectedSetsGoal] = useState({selectedValue: exercise.setsGoal})
+    const [selectedWeight, setSelectedWeight] = useState({ selectedValue: exercise.weight })
+    const [selectedReps, setSelectedReps] = useState({ selectedValue: exercise.reps })
+    const [selectedSetsGoal, setSelectedSetsGoal] = useState({ selectedValue: exercise.setsGoal })
 
     const finishEditing = () => {
         exercise.name = selectedName.selectedValue
@@ -62,7 +64,7 @@ const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}
                         </Picker.Column>
                     </Picker>
                 </td>
-                <td>
+                <td data-label={"Weight"}>
                     <Picker value={selectedWeight} onChange={setSelectedWeight} height={96}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.weight.map(option => (
@@ -73,7 +75,7 @@ const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}
                         </Picker.Column>
                     </Picker>
                 </td>
-                <td>
+                <td data-label={"Reps"}>
                     <Picker value={selectedReps} onChange={setSelectedReps} height={96}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.reps.map(option => (
@@ -84,7 +86,7 @@ const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}
                         </Picker.Column>
                     </Picker>
                 </td>
-                <td>
+                <td data-label={"Goal"}>
                     <Picker value={selectedSetsGoal} onChange={setSelectedSetsGoal} height={96}>
                         <Picker.Column name={"selectedValue"}>
                             {selections.setsGoal.map(option => (
@@ -96,8 +98,8 @@ const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}
                     </Picker>
                 </td>
                 <td>{exercise.setsLogged}</td>
-                <td><button onClick={() => finishEditing()}>Save</button></td>
-                <td><button onClick={() => deleteExercise(exercise.id)}>Delete</button></td>
+                <td><button className={`${buttons.button} ${buttons.saveButton}`} onClick={() => finishEditing()}>Save</button></td>
+                <td><button className={`${buttons.button} ${buttons.deleteButton}`} onClick={() => deleteExercise(exercise.id)}>Delete</button></td>
             </tr>
         </Fragment>
     );
