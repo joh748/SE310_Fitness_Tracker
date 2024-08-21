@@ -4,6 +4,10 @@ import ExerciseEditor from "./ExerciseEditor"
 
 const ExercisesDisplay = () => {
 
+    const [completedSets, setCompletedSets] = useState([])
+
+    const [exerciseList, setExerciseList] = useState({})
+
     const [exercises, setExercises] = useState([
         {   
             id: 0,
@@ -27,13 +31,26 @@ const ExercisesDisplay = () => {
 
     const [isEditing, setIsEditing] = useState(false)
 
-    const getLoadedExercises = async () => {
+    const getExerciseList = async () => {
         try {
-            // TODO: get currently loaded exercises from backend
+            const response = await fetch(`http://localhost:4001/exercises/all`);
+            const jsonData = await response.json();
+            console.log(jsonData)
 
-            const jsonData = exercises
+            const loadedExerciseList = {}
 
-            setExercises(jsonData);
+            for (var i in jsonData) {
+                const {name, muscle_group} = jsonData[i]
+                if (Object.keys(loadedExerciseList).includes(muscle_group)) {
+                    console.log(`add ${name} to ${muscle_group} exercises`)
+                    loadedExerciseList[muscle_group].push(name)
+                } else {
+                    console.log(`create new muscle group ${muscle_group}`)
+                    loadedExerciseList[muscle_group] = [name]
+                }
+            }
+            console.log(loadedExerciseList)
+            setExerciseList(loadedExerciseList);
 
         } catch (err) {
             console.error(err.message)
@@ -80,16 +97,28 @@ const ExercisesDisplay = () => {
         setExercises(exercises => updatedExercises)
     }
 
+    const logExercise = async (name, date, set, weight, rep) => {
+        try {
+            const response = await fetch(`http://localhost:4001/exercises/edit/Log/${name}/${date}/${set}/${weight}/${rep}/${weight*rep}`);
+            const jsonData = await response.json();
+            console.log(jsonData)
+        } catch (err) {
+            console.error(err.message)
+        }
+    };
+
     const logWorkout = async () => {
 
         // TODO: confirm all exercises as completed
+
+        
 
         setExercises([]);
     }
     
 
     useEffect(() => {
-        getLoadedExercises();
+        getExerciseList();
     }, []);
 
     return (
@@ -110,7 +139,7 @@ const ExercisesDisplay = () => {
                 <tbody>
                     {exercises.map(exercise => (
                             exercise.editMode ? 
-                                    <ExerciseEditor exercise={exercise} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
+                                    <ExerciseEditor exercise={exercise} exerciseList={exerciseList} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
                                 : 
                                     <ExerciseLogger exercise={exercise} isEditing={isEditing} updateExercise={updateExerciseById} />
                         )
