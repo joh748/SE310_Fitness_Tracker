@@ -4,18 +4,10 @@ import Picker from 'react-mobile-picker'
 import buttons from '../module_CSS/buttons.module.css'
 import styles from '../module_CSS/ExerciseEditor.module.css'
 
-const ExerciseEditor = ({ exercise, deleteExercise, updateExercise }) => {
+const ExerciseEditor = ({exercise, exerciseList, deleteExercise, updateExercise}) => {
 
     const selections = {
-        name: {
-            'Chest': ['Chest Press Machine', 'Barbell Bench Press', 'Chest Fly Machine'],
-            'Shoulder': ['Overhead Press', 'Lat Raise', 'Shoulder Press Machine'],
-            'Tricep': ['Tricep Dip', 'Tricep Extension'],
-            'Bicep': ['Preacher Curl', 'Seated Dumbell Curl'],
-            'Back': ['Lat Pulldown', 'Machine Row', 'Dumbbell Row'],
-            'Core': ['Seated Crunch'],
-            'Leg': ['Squat', 'Calf Raise']
-        },
+        name: exerciseList, 
         weight: _.range(501),
         reps: _.range(201),
         setsGoal: _.range(101)
