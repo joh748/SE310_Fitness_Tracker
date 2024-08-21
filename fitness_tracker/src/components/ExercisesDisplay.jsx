@@ -7,7 +7,7 @@ const ExercisesDisplay = () => {
     const [completedSets, setCompletedSets] = useState([])
 
     const [exerciseList, setExerciseList] = useState({})
-
+    
     const [exercises, setExercises] = useState([
         {   
             id: 0,
@@ -76,7 +76,7 @@ const ExercisesDisplay = () => {
             }]
           )
         );
-
+      
         setExercises(exercises => exercises.map(exercise => {
             if (exercise.id === updatedExercise.id) {
                 return updatedExercise
