@@ -65,6 +65,18 @@ const ExercisesDisplay = () => {
 
     const updateExerciseById = useCallback((updatedExercise) => {
 
+        setCompletedSets(completedSets => (
+            [...completedSets, {
+                name: updatedExercise.name,
+                date: getTodaysDateAsString(),
+                set: updatedExercise.setsLogged,
+                weight: updatedExercise.weight,
+                rep: updatedExercise.reps,
+                score: updatedExercise.weight * updatedExercise.reps
+            }]
+          )
+        );
+
         setExercises(exercises => exercises.map(exercise => {
             if (exercise.id === updatedExercise.id) {
                 return updatedExercise
@@ -76,6 +88,14 @@ const ExercisesDisplay = () => {
         setIsEditing(updatedExercise.editMode)
 
     }, [])
+
+    const getTodaysDateAsString = () => {
+        const today = new Date()
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+        var yyyy = today.getFullYear();
+        return dd + '-' + mm + '-' + yyyy;
+    }
 
     const addExercise = async () => {
 
@@ -93,13 +113,14 @@ const ExercisesDisplay = () => {
 
         const updatedExercises = [...exercises]
         updatedExercises.push(newExercise)
-        
         setExercises(exercises => updatedExercises)
     }
 
-    const logExercise = async (name, date, set, weight, rep) => {
+    const logExercise = async (name, date, set, weight, rep, score) => {
         try {
-            const response = await fetch(`http://localhost:4001/exercises/edit/Log/${name}/${date}/${set}/${weight}/${rep}/${weight*rep}`);
+            const response = await fetch(`http://localhost:4001/exercises/Log/${name}/${date}/${set}/${weight}/${rep}/${score}`, {
+                method: 'POST'
+            });
             const jsonData = await response.json();
             console.log(jsonData)
         } catch (err) {
@@ -109,9 +130,17 @@ const ExercisesDisplay = () => {
 
     const logWorkout = async () => {
 
-        // TODO: confirm all exercises as completed
-
-        
+        for (var i in completedSets) {
+            console.log(completedSets[i])
+            logExercise(
+                completedSets[i].name, 
+                completedSets[i].date, 
+                completedSets[i].set,
+                completedSets[i].weight, 
+                completedSets[i].rep, 
+                completedSets[i].score
+            )
+        }
 
         setExercises([]);
     }
