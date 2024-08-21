@@ -1,11 +1,13 @@
 import React, { Fragment, useState, useEffect, useCallback } from "react"
 import ExerciseLogger from "./ExerciseLogger"
 import ExerciseEditor from "./ExerciseEditor"
+import buttons from '../module_CSS/buttons.module.css'
+import styles from '../module_CSS/ExercisesDisplay.module.css'
 
 const ExercisesDisplay = () => {
 
     const [exercises, setExercises] = useState([
-        {   
+        {
             id: 0,
             name: "Lat Raise",
             weight: 20,
@@ -14,7 +16,7 @@ const ExercisesDisplay = () => {
             setsLogged: 2,
             editMode: false
         },
-        {   
+        {
             id: 1,
             name: "Squat",
             weight: 50,
@@ -42,7 +44,7 @@ const ExercisesDisplay = () => {
 
     const deleteExerciseById = useCallback((idToDelete) => {
 
-        setExercises(exercises => exercises.filter(({id}) => id !== idToDelete));
+        setExercises(exercises => exercises.filter(({ id }) => id !== idToDelete));
 
     }, [])
 
@@ -62,7 +64,7 @@ const ExercisesDisplay = () => {
 
     const addExercise = async () => {
 
-        const newExercise = {   
+        const newExercise = {
             id: Math.max(exercises.map(exercise => exercise.id)) + 1,
             name: "",
             weight: 10,
@@ -76,7 +78,7 @@ const ExercisesDisplay = () => {
 
         const updatedExercises = [...exercises]
         updatedExercises.push(newExercise)
-        
+
         setExercises(exercises => updatedExercises)
     }
 
@@ -86,7 +88,7 @@ const ExercisesDisplay = () => {
 
         setExercises([]);
     }
-    
+
 
     useEffect(() => {
         getLoadedExercises();
@@ -94,31 +96,37 @@ const ExercisesDisplay = () => {
 
     return (
         <Fragment>
-            <h1>Exercises</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th style={{width: 288}}>Name</th>
-                        <th style={{width: 96}}>Weight</th>
-                        <th style={{width: 96}}>Reps</th>
-                        <th style={{width: 96}}>Sets Goal</th>
-                        <th style={{width: 96}}>Sets Completed</th>
-                        <th style={{width: 96}}>Delete Exercise</th>
-                        <th style={{width: 96}}>Log Set</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {exercises.map(exercise => (
-                            exercise.editMode ? 
-                                    <ExerciseEditor exercise={exercise} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
-                                : 
-                                    <ExerciseLogger exercise={exercise} isEditing={isEditing} updateExercise={updateExerciseById} />
+            <div className={styles.container}>
+                <h1 className={styles.h1}>Exercises</h1>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Weight</th>
+                            <th>Reps</th>
+                            <th>Sets Goal</th>
+                            <th>Sets Completed</th>
+                            <th>Delete Exercise</th>
+                            <th>Log Set</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {exercises.map(exercise => (
+                            exercise.editMode ?
+                                <ExerciseEditor exercise={exercise} deleteExercise={deleteExerciseById} updateExercise={updateExerciseById} />
+                                :
+                                <ExerciseLogger exercise={exercise} isEditing={isEditing} updateExercise={updateExerciseById} />
                         )
-                    )}
-                </tbody>
-            </table>
-            {!isEditing && <button onClick={() => addExercise()}>Add Exercise</button>}
-            {!isEditing && <button onClick={() => logWorkout()}>Log Workout</button>}
+                        )}
+                    </tbody>
+                </table>
+
+                <div className={styles.buttonContainer}>
+                    {!isEditing && <button className={`${buttons.button} ${buttons.addButton}`} onClick={() => addExercise()}>Add Exercise</button>}
+                    {!isEditing && <button className={`${buttons.button} ${styles.logWorkoutButton}`} onClick={() => logWorkout()}>Log Workout</button>}
+                </div>
+
+            </div>
         </Fragment>
     )
 }
