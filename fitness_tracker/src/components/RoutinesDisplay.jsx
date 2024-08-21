@@ -65,7 +65,7 @@ const RoutinesDisplay = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={`${styles.header}`}>Workout Routines</h1>
+            <h1 className={`${styles.h1}`}>Workout Routines</h1>
             {isModalOpen ? 
                 <button 
                 className={`${styles.button} ${styles.cancelButton}`}
