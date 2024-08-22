@@ -54,14 +54,8 @@ const RoutinesDisplay = ({ onAddToTodayWorkout }) => {
         console.log("routines:", routines); // Debug log
         console.log("Updated routine:", updatedRoutine); // Debug log
         setRoutines(routines.map((routine, i) => i === index ? updatedRoutine : routine));
-        // routines have to be saved to the backend
+        // edited routines have to be saved to the backend
     };
-
-    const handleAddTodayWorkout = (routine) => {
-        console.log(routine); // Debug log
-        // the routine information can go to today's workout component
-    }
-    
 
     return (
         <div className={styles.container}>

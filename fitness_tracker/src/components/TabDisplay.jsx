@@ -40,7 +40,7 @@ function a11yProps(index) {
 // Todo: need to add swipe for mobile
 function TabDisplay() {
   const [value, setValue] = useState(0);
-  const [todayWorkout, setTodayWorkout] = useState([]); // State to hold today's workout exercises
+  const [todayWorkout, setTodayWorkout] = useState([]); // State to hold today's workout, init empty array
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
