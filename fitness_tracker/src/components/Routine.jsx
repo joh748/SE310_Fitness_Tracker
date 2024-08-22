@@ -15,7 +15,7 @@ const Routine = ({ routine, onSave, onDelete, onAddToToday }) => {
     const handleAddExercise = () => {
         setEditedRoutine({ 
             ...editedRoutine, 
-            exercises: [...editedRoutine.exercises, { name: '', setsGoal: '', reps: '', weight: '' }] 
+            exercises: [...editedRoutine.exercises, { name: '', setsGoal: '', setsLogged: 0, reps: '', weight: '' }] 
         });
     };
 
