@@ -20,4 +20,8 @@
     --table-row-hover-bg-color: #333333;
     --table-border-color: #333333;
     --table-text-color: #FFFFFF;
+
+    /* Graph */
+    --graph-bg-color: #1e1e1e;
+    
 }
